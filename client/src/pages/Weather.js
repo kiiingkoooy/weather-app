@@ -4,7 +4,7 @@ const Weather = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const initialData = location.state?.data.list;
-  let result = [];
+  let result = [];  
 
   for (const key in initialData) {
     result.push({
@@ -17,33 +17,34 @@ const Weather = () => {
       humidity: location.state.data.list[key].main.humidity,
     });
   }
-  console.log(result);
 
   const backBtnHandler = () => {
     navigate("/");
   };
 
-  const tdStyle = "pr-5";
+  const tdTitleStyle = "pr-8 bg-slate-200";
 
   let res = result.map((data) => {
     const date = new Date(data.date);
 
     return (
-      <table className="flex w-full justify-center mt-[10%]" key={data.key}>
-        <tbody className="">
-          <tr className="text-left">
+      <table className="flex w-full justify-center mt-[80px]" key={data.key}>
+        <tbody className="border-2 border-slate-600 rounded text-slate-600">
+          <tr className="text-left text-[20px]">
             <th>Date</th>
           </tr>
-          <tr className="text-left">
-            <td className={tdStyle}>(mm/dd/yyyy)</td>
-            <td className={tdStyle}>Temp(F)</td>
-            <td className={tdStyle}>Description</td>
-            <td className={tdStyle}>Main</td>
-            <td className={tdStyle}>Pressure</td>
-            <td className={tdStyle}>Humidity</td>
+          <tr className="text-left font-semibold text-[20px]">
+            <td className={tdTitleStyle}>(mm/dd/yyyy)</td>
+            <td className={tdTitleStyle}>Temp(F)</td>
+            <td className={tdTitleStyle}>Description</td>
+            <td className={tdTitleStyle}>Main</td>
+            <td className={tdTitleStyle}>Pressure</td>
+            <td className={tdTitleStyle}>Humidity</td>
           </tr>
-          <tr className="text-left">
-            <td>{new Intl.DateTimeFormat("en-US").format(date)}</td>
+          <tr className="text-left bg-slate-100">
+            <td className="">
+              {new Intl.DateTimeFormat("en-US").format(date)}
+            </td>
             <td>{data.temp.toFixed()}</td>
             <td>
               {data.description[0].toUpperCase() + data.description.slice(1)}
@@ -59,10 +60,11 @@ const Weather = () => {
 
   return (
     <div>
+      <p className="flex justify-center mt-[50px] text-[35px] font-bold text-blue-800">{location.state?.data.city.name ?? location.state?.data.city.name} Weather</p>
       <div className="flex justify-center mx-auto">{res}</div>
       <div>
         <button
-          className="flex float-right mr-[25%] mt-[10%] text-white px-[5%] py-[1%] rounded-lg bg-blue-400 hover:bg-blue-600 active:bg-blue-800"
+          className="flex justify-center mx-auto mt-[50px] text-white px-10 py-2 rounded-lg bg-blue-400 hover:bg-blue-600 active:bg-blue-800"
           onClick={backBtnHandler}
         >
           Back
