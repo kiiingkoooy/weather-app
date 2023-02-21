@@ -13,18 +13,18 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-blue-600 border-b shadow-sm top-0 z-40">
+    <div className="bg-blue-600 w-full border-b shadow-sm ">
       <header className="py-5 px-2">
         <ul className="flex justify-between items-center mr-5 ml-5">
           <div className="flex cursor-pointer" onClick={() => navigate("/")}>
-            <BsFillCloudyFill className="text-[50px] text-blue-200" />
-            <li className="flex ml-3 items-center text-[25px] text-blue-100 font-semibold">
+            <BsFillCloudyFill className="md:text-[50px] min-[320px]:text-[40px] text-blue-200" />
+            <li className="flex ml-3 items-center md:text-[25px] min-[320px]:text-[20px] text-blue-100 font-semibold">
               Weather Forecast
             </li>
           </div>
           {localStorage.getItem("accessToken") !== null && (
             <li
-              className="flex cursor-pointer text-[20px] text-blue-100 font-semibold"
+              className="flex cursor-pointer md:text-[20px] min-[320px]:text-[15px] text-blue-100 font-semibold"
               onClick={logOutHandler}
             >
               Logout

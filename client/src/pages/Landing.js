@@ -63,7 +63,7 @@ const Landing = () => {
           <p className="flex justify-center mb-[5%] text-[35px] font-bold pt-[8%] text-blue-800">
             Hello, World!
           </p>
-          <p className="flex mx-auto items-center text-[15px] font-semibold mb-[10%] w-[500px] text-blue-800">
+          <p className="flex text-center text-[15px] min-[320px]:w-[300px] font-semibold mb-[10%] md:w-[500px] text-blue-800">
             Welcome to the weather forecast web application. Please login with
             your Github user to use the application and view the weather in your
             city.

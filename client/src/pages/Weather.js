@@ -33,21 +33,27 @@ const Weather = () => {
     navigate("/");
   };
 
-  const tdTitleStyle = "pr-8 bg-slate-200";
+  const tdStyle = "pr-8 bg-slate-200"
+  const tdTitleStyle = "pr-8 bg-slate-200 min-[320px]:invisible md:visible";
 
   let res = result.map((data) => {
     const date = new Date(data.date);
 
     return (
-      <table className="flex w-full justify-center mt-[80px]" key={data.key}>
-        <tbody className="border-2 border-slate-600 rounded text-slate-600">
-          <tr className="text-left text-[20px]">
+      <table
+        className="flex w-full justify-center mt-[80px]"
+        key={data.key}
+      >
+        <tbody className="border-2 border-slate-600 min-[320px]:w-[221.27px] md:w-[714.5px] rounded text-slate-600">
+          <tr className="text-left text-[20px] ">
             <th>Date</th>
           </tr>
-          <tr className="text-left font-semibold text-[20px]">
-            <td className={tdTitleStyle}>(mm/dd/yyyy)</td>
-            <td className={tdTitleStyle}>Temp(F)</td>
-            <td className={tdTitleStyle}>Description</td>
+          <tr className="text-left font-semibold min-[320px]:text-[15px] md:text-[20px]">
+            <td className={tdStyle}>(mm/dd/yyyy)</td>
+            <td className={tdStyle}>Temp(F)</td>
+            <td className={tdTitleStyle}>
+              Description
+            </td>
             <td className={tdTitleStyle}>Main</td>
             <td className={tdTitleStyle}>Pressure</td>
             <td className={tdTitleStyle}>Humidity</td>
@@ -57,12 +63,12 @@ const Weather = () => {
               {new Intl.DateTimeFormat("en-US").format(date)}
             </td>
             <td>{data.temp.toFixed()}</td>
-            <td>
+            <td className="min-[320px]:invisible md:visible">
               {data.description[0].toUpperCase() + data.description.slice(1)}
             </td>
-            <td>{data.main}</td>
-            <td>{data.pressure}</td>
-            <td>{data.humidity}</td>
+            <td className="min-[320px]:invisible md:visible">{data.main}</td>
+            <td className="min-[320px]:invisible md:visible">{data.pressure}</td>
+            <td className="min-[320px]:invisible md:visible">{data.humidity}</td>
           </tr>
         </tbody>
       </table>
