@@ -60,16 +60,16 @@ const Landing = () => {
         </div>
       ) : (
         <div className="">
-          <p className="flex justify-center mb-[5%] text-[35px] font-bold pt-[8%]">
+          <p className="flex justify-center mb-[5%] text-[35px] font-bold pt-[8%] text-blue-800">
             Hello, World!
           </p>
-          <p className="text-[15px] font-semibold mb-[10%]">
+          <p className="flex mx-auto items-center text-[15px] font-semibold mb-[10%] w-[500px] text-blue-800">
             Welcome to the weather forecast web application. Please login with
             your Github user to use the application and view the weather in your
-            city
+            city.
           </p>
           <button
-            className="flex mx-auto border-2 py-2 px-4 text-white bg-blue-400 hover:bg-blue-600"
+            className="flex mx-auto py-2 px-10 text-white rounded-lg bg-blue-300 hover:bg-blue-600 active:bg-blue-800 uppercase"
             onClick={gitHubLogIn}
           >
             Login

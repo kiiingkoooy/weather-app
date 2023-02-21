@@ -16,7 +16,7 @@ const Home = (props) => {
     fetch(URL)
       .then((res) => res.json())
       .then((data) => {
-        setResult(data);
+        setResult(data);        
       })
       .catch((err) => {
         console.log(err);
@@ -35,9 +35,7 @@ const Home = (props) => {
     }
   };
 
-  console.log(gitData);
-
-  const infoStyle = "flex justify-center text-[25px] font-semibold mb-[5%]";
+  const infoStyle = "flex justify-center text-[25px] font-semibold mb-[5%] text-slate-600";
 
   return (
     <div className="mt-[15%]">
