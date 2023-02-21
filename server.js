@@ -20,12 +20,12 @@ app.get("/getAccessToken", async function (req, res) {
     "&client_secret=" +
     CLIENT_SECRET +
     "&code=" +
-    req.query.code;
+    req.query.code; //request query code
 
   await fetch("https://github.com/login/oauth/access_token" + params, {
     method: "POST",
     headers: {
-      Accept: "application/json",
+      "Accept": "application/json",
     },
   })
     .then((response) => {
@@ -33,7 +33,7 @@ app.get("/getAccessToken", async function (req, res) {
     })
     .then((data) => {
       console.log(data);
-      res.json(data);
+      res.json(data); //response
     });
 });
 
@@ -42,7 +42,7 @@ app.get("/getUserData", async (req, res) => {
   await fetch("https://api.github.com/user", {
     method: "GET",
     headers: {
-      Authorization: req.get("Authorization"), //Access Token
+      "Authorization": req.get("Authorization"), //Access Token
     },
   })
     .then((response) => {
