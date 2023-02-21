@@ -1,11 +1,14 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BiSearchAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
+import { useLoading } from "../store/Store";
 
 const API_key = "6ac2528edaa00e1647a86ba1e557ad42";
 
 const Home = (props) => {
   const [result, setResult] = useState([]);
+  const {loading, setLoading} = useLoading();
   const navigate = useNavigate();
   const gitData = props.data;
   let inputRef = useRef(null);
@@ -16,7 +19,7 @@ const Home = (props) => {
     fetch(URL)
       .then((res) => res.json())
       .then((data) => {
-        setResult(data);        
+        setResult(data);
       })
       .catch((err) => {
         console.log(err);
@@ -35,10 +38,17 @@ const Home = (props) => {
     }
   };
 
-  const infoStyle = "flex justify-center text-[25px] font-semibold mb-[5%] text-slate-600";
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {setLoading(false)}, 500);
+  }, [setLoading]);
+
+  const infoStyle =
+    "flex justify-center text-[25px] font-semibold mb-[5%] text-slate-600";
 
   return (
     <div className="mt-[15%]">
+      {loading ? <Spinner /> : ''}
       {/* User Info */}
       <div className={infoStyle}>
         {gitData.name !== null ? gitData.name : gitData.login}

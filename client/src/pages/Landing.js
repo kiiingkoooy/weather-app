@@ -5,12 +5,12 @@ import Home from "./Home";
 const CLIENT_ID = "4dfacd65d4ff84914779";
 
 const Landing = () => {
-  const { isLoggedIn, setIsLoggedIn } = useLogin();
+  const { isLoggedIn, setIsLoggedIn } = useLogin();  
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    const queryString = window.location.search;
-    const codeParam = queryString.slice(6);
+    const queryString = window.location.search; //searchbar
+    const codeParam = queryString.slice(6); //getting the Code
 
     if (codeParam && localStorage.getItem("accessToken") === null) {
       const getAccessToken = async () => {
@@ -33,7 +33,7 @@ const Landing = () => {
       await fetch("http://localhost:4000/getUserData", {
         method: "GET",
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("accessToken"), //ACCESSTOKEN
+          Authorization: "Bearer " + localStorage.getItem("accessToken"), //Access Token
         },
       })
         .then((response) => {
@@ -53,7 +53,7 @@ const Landing = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center">      
       {localStorage.getItem("accessToken") ? (
         <div>
           <Home data={userData} />
@@ -76,7 +76,6 @@ const Landing = () => {
           </button>
         </div>
       )}
-      {isLoggedIn && <div></div>}
     </div>
   );
 };

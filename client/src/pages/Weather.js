@@ -1,10 +1,21 @@
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
+import { useLoading } from "../store/Store";
 
 const Weather = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { loading, setLoading } = useLoading();
   const initialData = location.state?.data.list;
-  let result = [];  
+  let result = [];
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [setLoading]);
 
   for (const key in initialData) {
     result.push({
@@ -60,7 +71,11 @@ const Weather = () => {
 
   return (
     <div>
-      <p className="flex justify-center mt-[50px] text-[35px] font-bold text-blue-800">{location.state?.data.city.name ?? location.state?.data.city.name} Weather</p>
+      {loading ? <Spinner /> : ""}
+      <p className="flex justify-center mt-[50px] text-[35px] font-bold text-blue-800">
+        {location.state?.data.city.name ?? location.state?.data.city.name}{" "}
+        Weather
+      </p>
       <div className="flex justify-center mx-auto">{res}</div>
       <div>
         <button
