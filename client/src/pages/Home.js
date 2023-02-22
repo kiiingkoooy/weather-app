@@ -60,7 +60,7 @@ const Home = (props) => {
         <input
           className="w-[90%] uppercase text-[20px]"
           ref={inputRef}
-          placeholder="City"
+          placeholder="Enter a City"
           onChange={inputWeather}
         />
         <span className="flex text-[20px] items-center mx-auto">
