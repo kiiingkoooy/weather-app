@@ -48,7 +48,7 @@ const Home = (props) => {
 
   return (
     <div className="mt-[15%]">
-      {loading ? <Spinner /> : ''}
+      {loading && <Spinner />}
       {/* User Info */}
       <div className={infoStyle}>
         {gitData.name !== null ? gitData.name : gitData.login}

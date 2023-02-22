@@ -77,7 +77,7 @@ const Weather = () => {
 
   return (
     <div>
-      {loading ? <Spinner /> : ""}
+      {loading && <Spinner />}
       <p className="flex justify-center mt-[50px] text-[35px] font-bold text-blue-800">
         {location.state?.data.city.name ?? location.state?.data.city.name}{" "}
         Weather
